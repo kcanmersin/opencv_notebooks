@@ -33,11 +33,12 @@ if not ret:
 
 #Select lines
 print("First select middle line points, then select upper line points, then select bottom line points")
+
+text1 = "Select middle line points"
+text2 = "Select upper line points"
+text3 = "Select bottom line points"
+text4 = "Press q to continue" 
 while True:
-    text1 = "Select middle line points"
-    text2 = "Select upper line points"
-    text3 = "Select bottom line points"
-    text4 = "Press q to continue"  # Added this line
     
     # Draw the frame
     display_frame = frame.copy()
@@ -50,10 +51,12 @@ while True:
     
     if len(line2) >= 2:
         cv2.putText(display_frame, text3, (10, 90), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
-    
-    # Add the "Press q to continue" text to the frame
-    cv2.putText(display_frame, text4, (10, 120), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
-    
+
+
+    if len(line1) >= 2 and len(line2) >= 2:
+        cv2.putText(display_frame, text4, (10, 120), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
+
+
     cv2.imshow("Select Lines", display_frame)
     
     key = cv2.waitKey(1) & 0xFF
